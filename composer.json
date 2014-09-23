@@ -1,0 +1,33 @@
+{
+    "name": "presta/initializer-bundle",
+    "type": "symfony-bundle",
+    "description": "Presta Initializer bundle :  Initialize common tasks as we do at Prestaconcept",
+    "keywords": ["symfony2", "bundle", "initializer", "prestaconcept"],
+    "homepage": "https://github.com/prestaconcept/PrestaInitializerBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nicolas Bastien",
+            "email": "nbastien@prestaconcept.net",
+            "homepage": "http://www.prestaconcept.net/"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "suggest": {
+        "presta/deployment-bundle": "1.0.*"
+    },
+    "autoload": {
+        "psr-4": { "Presta\\InitializerBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
