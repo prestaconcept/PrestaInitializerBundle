@@ -92,7 +92,7 @@ class ScriptHandler
     {
         $event->getIO()->write('[presta-initializer] generate documentation skeleton');
 
-        $content = file_get_contents(__DIR__.'/../Resources/skeleton/README.md');
+        $content = file_get_contents(__DIR__ . '/../Resources/skeleton/README.md');
 
         $customerName = $event->getIO()->ask(
             'Customer name: ',
