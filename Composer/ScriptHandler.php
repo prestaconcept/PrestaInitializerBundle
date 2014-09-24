@@ -35,6 +35,7 @@ class ScriptHandler
         self::setUpPermissions($event);
         self::addVagrantIp($event);
         self::generateDocumentationFiles($event);
+        self::generateMakefile($event);
         self::cleanInstall($event);
 
         $event->getIO()->write('[presta-initializer] Install done');
@@ -76,7 +77,7 @@ class ScriptHandler
 
         $content = str_replace(
             "array('127.0.0.1', ",
-            "array('127.0.0.1', '192.168.33.10', ",
+            "array('127.0.0.1', '192.168.33.10', '192.168.33.1', ",
             $content
         );
 
@@ -92,7 +93,7 @@ class ScriptHandler
     {
         $event->getIO()->write('[presta-initializer] generate documentation skeleton');
 
-        $content = file_get_contents(__DIR__.'/../Resources/skeleton/README.md');
+        $content = file_get_contents(__DIR__ . '/../Resources/skeleton/README.md');
 
         $customerName = $event->getIO()->ask(
             'Customer name: ',
@@ -130,5 +131,19 @@ class ScriptHandler
         }
 
         $event->getIO()->write('[presta-initializer] clean install done');
+    }
+
+    /**
+     * @param CommandEvent $event
+     */
+    public static function generateMakefile(CommandEvent $event)
+    {
+        $event->getIO()->write('[presta-initializer] generate makefile skeleton');
+
+        $content = file_get_contents(__DIR__ . '/../Resources/skeleton/Makefile');
+
+        file_put_contents('Makefile', $content);
+
+        $event->getIO()->write('[presta-initializer] generate makefile skeleton done');
     }
 }
