@@ -1,7 +1,9 @@
+ENV = "dev"
+
 ## Command used by Prestaconcept deployment process
 ## This allow you to easily add other command
 install:
-	app/console presta:deployment:update --env=dev
+	app/console presta:deployment:install --env=dev
 
 update:
 	app/console presta:deployment:update --env=dev
