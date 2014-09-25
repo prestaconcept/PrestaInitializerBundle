@@ -33,7 +33,7 @@ class ScriptHandler
         $event->getIO()->write('[presta-initializer] Install');
 
         self::setUpPermissions($event);
-        self::addVagrantIp($event);
+        self::addDevelopmentIp($event);
         self::generateDocumentationFiles($event);
         self::generateMakefile($event);
         self::cleanInstall($event);
@@ -58,7 +58,16 @@ class ScriptHandler
             $event->getIO()->write('update ' . $file);
             $content = file_get_contents($file);
 
-            $content = str_replace('<?php', '<?php' . PHP_EOL . 'umask(0000);' . PHP_EOL, $content);
+            if (strpos($content, 'umask(0000);//[presta-initializer]') !== false) {
+                $event->getIO()->write('[presta-initializer] permissions already exist : abort');
+                continue;
+            }
+
+            $content = str_replace(
+                '<?php',
+                '<?php' . PHP_EOL . 'umask(0000);//[presta-initializer]' . PHP_EOL,
+                $content
+            );
 
             file_put_contents($file, $content);
         }
@@ -69,11 +78,16 @@ class ScriptHandler
     /**
      * @param CommandEvent $event
      */
-    public static function addVagrantIp(CommandEvent $event)
+    public static function addDevelopmentIp(CommandEvent $event)
     {
-        $event->getIO()->write('[presta-initializer] add vagrant ip for dev');
+        $event->getIO()->write('[presta-initializer] add development ip');
 
         $content = file_get_contents('web/app_dev.php');
+
+        if (strpos($content, "'127.0.0.1', '192.168.33.10', '192.168.33.1',") !== false) {
+            $event->getIO()->write('[presta-initializer] development ip already exist : abort');
+            return;
+        }
 
         $content = str_replace(
             "array('127.0.0.1', ",
@@ -92,6 +106,11 @@ class ScriptHandler
     public static function generateDocumentationFiles(CommandEvent $event)
     {
         $event->getIO()->write('[presta-initializer] generate documentation skeleton');
+
+        if (file_exists('README.md')) {
+            $event->getIO()->write('[presta-initializer] README.md already exist : abort');
+            return;
+        }
 
         $content = file_get_contents(__DIR__ . '/../Resources/skeleton/README.md');
 
@@ -121,8 +140,10 @@ class ScriptHandler
         $event->getIO()->write('[presta-initializer] clean install');
 
         //Remove config.php
-        $event->getIO()->write('remove : web/config.php');
-        unlink('web/config.php');
+        if (file_exists('web/config.php')) {
+            $event->getIO()->write('remove : web/config.php');
+            unlink('web/config.php');
+        }
 
         //Remove Upgrade documentation
         foreach (glob("UPGRADE*.md") as $file) {
@@ -139,6 +160,11 @@ class ScriptHandler
     public static function generateMakefile(CommandEvent $event)
     {
         $event->getIO()->write('[presta-initializer] generate makefile skeleton');
+
+        if (file_exists('Makefile')) {
+            $event->getIO()->write('[presta-initializer] Makefile already exist : abort');
+            return;
+        }
 
         $content = file_get_contents(__DIR__ . '/../Resources/skeleton/Makefile');
 
