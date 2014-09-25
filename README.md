@@ -7,7 +7,7 @@ Presta Initializer Bundle
 [![Latest Stable Version](https://poser.pugx.org/presta/initializer-bundle/v/stable.png)](https://packagist.org/packages/presta/initializer-bundle)
 [![Total Downloads](https://poser.pugx.org/presta/initializer-bundle/downloads.png)](https://packagist.org/packages/presta/initializer-bundle)
 
-[![SensioLabsInsight]()]()
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/343bc185-499a-4b5c-a2b6-4ea23a7518ab/big.png)](https://insight.sensiolabs.com/projects/343bc185-499a-4b5c-a2b6-4ea23a7518ab)
 [![knpbundles.com](http://knpbundles.com/prestaconcept/PrestaInitializerBundle/badge)](http://knpbundles.com/prestaconcept/PrestaInitializerBundle)
 
 ## Overview ##
