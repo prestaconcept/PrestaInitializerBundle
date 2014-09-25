@@ -12,8 +12,9 @@
 ## ###CUSTOMER_NAME###
 
 | Fonction                  | Nom                   | Email                                 | Téléphone             |
-| ------------------------- | ----------------- ----| ------------------------------------- | --------------------- |
+| ------------------------- | --------------------- | ------------------------------------- | --------------------- |
 | *Chef de projet*          | Chef de projet        | cp@client.com                         | 33 (0)4 XX XX XX XX   |
+| *Responsable Technique*   | Responsable Technique | rt@client.com                         | 33 (0)4 XX XX XX XX   |
 
 ## Environement
 
