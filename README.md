@@ -25,6 +25,12 @@ to centralize our open source activity.
 
 :speech_balloon: If you need help about this project you can [post a message on our google group][3]
 
+## Documentation ##
+
+Vous trouverez la documentation projet dans le répertoire /Resources/doc :
+
+- [Installation](Resources/doc/001-installation.md)
+
 ## Contributing
 
 Pull requests are welcome.
