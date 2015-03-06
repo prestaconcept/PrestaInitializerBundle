@@ -27,7 +27,7 @@ to centralize our open source activity.
 
 ## Documentation ##
 
-Vous trouverez la documentation projet dans le répertoire /Resources/doc :
+You can find project documentation under /Resources/doc folder:
 
 - [Installation](Resources/doc/001-installation.md)
 

@@ -25,7 +25,7 @@ you have installed your project and get the Symfony source code.
 
     new Presta\InitializerBundle\PrestaInitializerBundle(),
 
-### Supprimer le README
+### Delete README file
 
 ### Then launch install
 

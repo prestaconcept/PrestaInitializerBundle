@@ -2,17 +2,13 @@
 
 ## Récupération des sources
 
-```
-git clone [adresse]
-cd WebViewAlliance
-```
+    git clone [adresse]
+    cd WebViewAlliance
 
 ## Installation
 
-```
-composer install
-make install
-```
+    composer install
+    make install
 
 ## Explication des commandes contenues dans le Makefile
 
@@ -33,6 +29,8 @@ Ces commandes sont appellées par : make [commande]
    
 ## Installation en production
 
+### Configuration
+
 Afin de pouvoir initialiser votre configuration capifony, voila la liste des répertoires qui devront être
 partagé entre vos releases et initialisé dans le dossier /shared
 
@@ -47,3 +45,8 @@ partagé entre vos releases et initialisé dans le dossier /shared
         app_path + "/exports",
         web_path + "/uploads"
     ]
+
+### Détails des répertoires de l'application 
+
+    - /web/upload/wysiwyg : répertoire de téléchargement depuis le wysiwyg
+    - ...
