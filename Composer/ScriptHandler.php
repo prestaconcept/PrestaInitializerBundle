@@ -129,6 +129,19 @@ class ScriptHandler
 
         file_put_contents('README.md', $content);
 
+        if (file_exists('doc/001-installation.md')) {
+            $event->getIO()->write('[presta-initializer] doc/001-installation.md already exist : abort');
+            return;
+        }
+
+        if (!file_exists('doc')) {
+            mkdir('doc');
+        }
+
+        $content = file_get_contents(__DIR__ . '/../Resources/skeleton/doc/001-installation.md');
+
+        file_put_contents('doc/001-installation.md', $content);
+
         $event->getIO()->write('[presta-initializer] generate documentation skeleton done');
     }
 

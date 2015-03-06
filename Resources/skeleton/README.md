@@ -22,14 +22,20 @@
 | --------------------- | --------------------------------------------------------------------------------- |
 | **Vagrant**           | [http://www.vagrant.dev/app_dev.php][vagrant]                                     |
 | **Intégration**       | [http://www.integration.local][integration]                                       |
-| **Recette**           | [http://www.recette.com][preprod]                                                 |
+| **Recette**           | [http://www.recette.com][recette]                                                 |
 | **Production**        | [http://www.prod.com][prod]                                                       |
-| **PIC**               | [http://pic/job/projet][pic ]                                                     |
+| **PIC**               | [http://pic/job/projet][pic]                                                     |
 | **Code**              | [https://gitlab.com/projet][code]                                                 |
 
 ## Présentation du projet
 
 *Yet another great project developed by Prestaconcept and another satisfied customer with a successful business.*
+
+## Documentation ##
+
+Vous trouverez la documentation projet dans le répertoire /doc :
+
+- [Installation](doc/001-installation.md)
 
 ---
 
