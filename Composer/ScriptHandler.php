@@ -10,6 +10,7 @@
 namespace Presta\InitializerBundle\Composer;
 
 use Composer\Script\CommandEvent;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * @author Nicolas Bastien <nbastien@prestaconcept.net>
@@ -112,7 +113,7 @@ class ScriptHandler
             return;
         }
 
-        $content = file_get_contents(__DIR__ . '/../Resources/skeleton/README.md');
+        $content = file_get_contents(self::getSkeletonPath() . 'README.md');
 
         $customerName = $event->getIO()->ask(
             'Customer name: ',
@@ -134,13 +135,19 @@ class ScriptHandler
             return;
         }
 
+        if (file_exists('doc/002-grunt.md')) {
+            $event->getIO()->write('[presta-initializer] doc/002-grunt.md already exist : abort');
+            return;
+        }
+
         if (!file_exists('doc')) {
             mkdir('doc');
         }
 
-        $content = file_get_contents(__DIR__ . '/../Resources/skeleton/doc/001-installation.md');
-
+        $content = file_get_contents(self::getSkeletonPath() . 'doc/001-installation.md');
         file_put_contents('doc/001-installation.md', $content);
+        $content = file_get_contents(self::getSkeletonPath() . 'doc/002-grunt.md');
+        file_put_contents('doc/002-grunt.md', $content);
 
         $event->getIO()->write('[presta-initializer] generate documentation skeleton done');
     }
@@ -179,10 +186,18 @@ class ScriptHandler
             return;
         }
 
-        $content = file_get_contents(__DIR__ . '/../Resources/skeleton/Makefile');
+        $content = file_get_contents(self::getSkeletonPath() . 'Makefile');
 
         file_put_contents('Makefile', $content);
 
         $event->getIO()->write('[presta-initializer] generate makefile skeleton done');
+    }
+
+    /**
+     * @return string
+     */
+    protected static function getSkeletonPath()
+    {
+        return __DIR__ . '/../Resources/skeleton/';
     }
 }

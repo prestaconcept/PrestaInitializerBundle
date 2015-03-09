@@ -3,7 +3,7 @@
 ## Récupération des sources
 
     git clone [adresse]
-    cd WebViewAlliance
+    cd projectName
 
 ## Installation
 

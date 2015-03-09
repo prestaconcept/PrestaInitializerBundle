@@ -28,7 +28,7 @@ ai:
 	app/console assets:install web
 
 ais:
-	app/console assets:install web --symlink
+	app/console assets:install web --symlink --relative
 
 cs:
 	bin/phpcs --extensions=php -n --standard=PSR2 --report=full src

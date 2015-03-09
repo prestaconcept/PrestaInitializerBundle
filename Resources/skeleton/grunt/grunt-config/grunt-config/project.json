@@ -1,0 +1,19 @@
+{
+    "front": {
+        "_comment" : "'project' for team developped files for current project and 'libs' for external files",
+
+        "styles": {
+            "project": [
+                "<%= path.root %>app/styles/less/main.less"
+            ],
+            "libs": []
+        },
+        "scripts": {
+            "project": [
+                "<%= path.root %>app/scripts/main.js"
+            ],
+            "libs": []
+        },
+        "useJsRouting": false
+    }
+}
