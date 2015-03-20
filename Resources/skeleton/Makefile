@@ -33,8 +33,8 @@ ais:
 cs:
 	bin/phpcs --extensions=php -n --standard=PSR2 --report=full src
 
-cs-fixer:
-	php-cs-fixer fix src
+cbf:
+	bin/phpcbf --extensions=php --standard=PSR2 src
 
 cc:
 	app/console cache:clear
