@@ -37,9 +37,9 @@ EOF
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $directory = $this->getContainer()->getParameter('kernel.root_dir') . '/../';
+        $dialog    = $this->getHelperSet()->get('dialog');
 
-        $applicationUrl = $this
-            ->getDialog()
+        $applicationUrl = $dialog
             ->ask(
                 $output,
                 sprintf(
@@ -50,8 +50,7 @@ EOF
                 ''
             );
 
-        $addProfileForJenkins = $this
-            ->getDialog()
+        $addProfileForJenkins = $dialog
             ->select(
                 $output,
                 sprintf('<question>%s</question>', 'Create a behat profile for jenkins'),
@@ -62,7 +61,7 @@ EOF
         $jenkinsApplicationUrl = '';
 
         if ($addProfileForJenkins) {
-            $jenkinsApplicationUrl = $this->getDialog()->ask(
+            $jenkinsApplicationUrl = $dialog->ask(
                 $output,
                 sprintf('<question>%s</question>', 'Your jenkins application url'),
                 ''
@@ -104,14 +103,6 @@ EOF
         if (!$process->isSuccessful()) {
             throw new RuntimeException($process->getErrorOutput());
         }
-    }
-
-    /**
-     * @return DialogHelper
-     */
-    private function getDialog()
-    {
-        return $this->getHelperSet()->get('dialog');
     }
 
     /**
