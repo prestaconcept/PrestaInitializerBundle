@@ -18,14 +18,14 @@
 
 ## Environement
 
-| Environnement         | Url                                                                               |
-| --------------------- | --------------------------------------------------------------------------------- |
-| **Vagrant**           | [http://www.vagrant.dev/app_dev.php][vagrant]                                     |
-| **Intégration**       | [http://www.integration.local][integration]                                       |
-| **Recette**           | [http://www.recette.com][recette]                                                 |
-| **Production**        | [http://www.prod.com][prod]                                                       |
-| **PIC**               | [http://pic/job/projet][pic]                                                     |
-| **Code**              | [https://gitlab.com/projet][code]                                                 |
+| Environnement         | Url                                                                               | Htaccess                                      |
+| --------------------- | --------------------------------------------------------------------------------- |                                               |
+| **Vagrant**           | [http://www.vagrant.dev/app_dev.php][vagrant]                                     |                                               |
+| **Intégration**       | [http://www.integration.local][integration]                                       |                                               |
+| **Recette**           | [http://www.recette.com][recette]                                                 |                                               |
+| **Production**        | [http://www.prod.com][prod]                                                       |                                               |
+| **PIC**               | [http://pic/job/projet][pic]                                                      |                                               |
+| **Code**              | [https://gitlab.com/projet][code]                                                 |                                               |
 
 ## Présentation du projet
 
