@@ -144,8 +144,7 @@ class ScriptHandler
             mkdir('doc');
         }
 
-        $content = file_get_contents(__DIR__ . '/../Resources/skeleton/doc/001-installation.md');
-
+        $content = file_get_contents(self::getSkeletonPath() . 'doc/001-installation.md');
         file_put_contents('doc/001-installation.md', $content);
         $content = file_get_contents(self::getSkeletonPath() . 'doc/002-grunt.md');
         file_put_contents('doc/002-grunt.md', $content);

@@ -1,0 +1,27 @@
+default:
+    formatters:
+        pretty: true
+    suites:
+        default:
+            contexts: ~
+    extensions:
+        Behat\MinkExtension:
+            base_url: '{{ application_local_url }}/app_test.php/'
+            sessions:
+                default:
+                    goutte: ~
+                javascript:
+                    zombie: ~
+            browser_name: firefox
+            show_auto:    false
+        Behat\Symfony2Extension: ~
+        Knp\FriendlyContexts\Extension: ~
+{% if use_jenkins %}
+jenkins:
+    formatters:
+        pretty: false
+        progress: true
+    extensions:
+        Behat\MinkExtension:
+            base_url: '{{ application_jenkins_url }}/app_test.php/'
+{% endif %}
