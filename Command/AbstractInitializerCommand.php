@@ -9,11 +9,13 @@
  */
 namespace Presta\InitializerBundle\Command;
 
-use Presta\InitializerBundle\Exception\EnvironmentException;
-use Presta\InitializerBundle\Manager\ConfigurationManager;
+use Symfony\Bridge\Twig\TwigEngine;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * @author Matthieu Crinquand <mcrinquand@prestaconcept.net>
@@ -56,7 +58,32 @@ abstract class AbstractInitializerCommand extends ContainerAwareCommand
     protected function clearCache()
     {
         $application  = $this->getApplication();
-        $commandInput = new ArrayInput(array('command' => 'cache:clear'));
+        $commandInput = new ArrayInput(['command' => 'cache:clear']);
         $application->doRun($commandInput, $this->output);
+    }
+
+
+    /**
+     * @return Kernel
+     */
+    protected function getKernel()
+    {
+        return $this->getContainer()->get('kernel');
+    }
+
+    /**
+     * @return TwigEngine
+     */
+    protected function getTwigEngine()
+    {
+        return $this->getContainer()->get('templating');
+    }
+
+    /**
+     * @return Filesystem
+     */
+    protected function getFilesystem()
+    {
+        return new Filesystem();
     }
 }

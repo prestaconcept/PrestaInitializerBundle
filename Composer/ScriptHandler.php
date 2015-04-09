@@ -9,7 +9,7 @@
  */
 namespace Presta\InitializerBundle\Composer;
 
-use Composer\Script\CommandEvent;
+use Composer\Script\Event;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -27,9 +27,9 @@ class ScriptHandler
      *     ],
      * ...
      *
-     * @param CommandEvent $event
+     * @param Event $event
      */
-    public static function install(CommandEvent $event)
+    public static function install(Event $event)
     {
         $event->getIO()->write('[presta-initializer] Install');
 
@@ -43,9 +43,9 @@ class ScriptHandler
     }
 
     /**
-     * @param CommandEvent $event
+     * @param Event $event
      */
-    public static function setUpPermissions(CommandEvent $event)
+    public static function setUpPermissions(Event $event)
     {
         $event->getIO()->write('[presta-initializer] set up permissions');
 
@@ -77,9 +77,9 @@ class ScriptHandler
     }
 
     /**
-     * @param CommandEvent $event
+     * @param Event $event
      */
-    public static function addDevelopmentIp(CommandEvent $event)
+    public static function addDevelopmentIp(Event $event)
     {
         $event->getIO()->write('[presta-initializer] add development ip');
 
@@ -102,9 +102,9 @@ class ScriptHandler
     }
 
     /**
-     * @param CommandEvent $event
+     * @param Event $event
      */
-    public static function generateDocumentationFiles(CommandEvent $event)
+    public static function generateDocumentationFiles(Event $event)
     {
         $event->getIO()->write('[presta-initializer] generate documentation skeleton');
 
@@ -153,9 +153,9 @@ class ScriptHandler
     }
 
     /**
-     * @param CommandEvent $event
+     * @param Event $event
      */
-    public static function cleanInstall(CommandEvent $event)
+    public static function cleanInstall(Event $event)
     {
         $event->getIO()->write('[presta-initializer] clean install');
 
@@ -175,9 +175,9 @@ class ScriptHandler
     }
 
     /**
-     * @param CommandEvent $event
+     * @param Event $event
      */
-    public static function generateMakefile(CommandEvent $event)
+    public static function generateMakefile(Event $event)
     {
         $event->getIO()->write('[presta-initializer] generate makefile skeleton');
 
