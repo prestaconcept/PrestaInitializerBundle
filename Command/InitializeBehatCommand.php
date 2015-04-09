@@ -3,16 +3,11 @@
 namespace Presta\InitializerBundle\Command;
 
 use RuntimeException;
-use Symfony\Bridge\Twig\TwigEngine;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Helper\DialogHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Process\Process;
 
-class InitializeBehatCommand extends ContainerAwareCommand
+class InitializeBehatCommand extends AbstractInitializerCommand
 {
     /**
      * {@inheritdoc}
@@ -28,7 +23,7 @@ The <info>%command.name%</info> command initialize behat with
 - Add requirement inside your composer.json
 - Create a behat.yml.dist at the top of your project
 EOF
-);
+            );
     }
 
     /**
@@ -103,29 +98,5 @@ EOF
         if (!$process->isSuccessful()) {
             throw new RuntimeException($process->getErrorOutput());
         }
-    }
-
-    /**
-     * @return TwigEngine
-     */
-    private function getTwigEngine()
-    {
-        return $this->getContainer()->get('templating');
-    }
-
-    /**
-     * @return Filesystem
-     */
-    private function getFilesystem()
-    {
-        return new Filesystem();
-    }
-
-    /**
-     * @return Kernel
-     */
-    private function getKernel()
-    {
-        return $this->getContainer()->get('kernel');
     }
 }
