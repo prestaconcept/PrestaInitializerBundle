@@ -135,19 +135,12 @@ class ScriptHandler
             return;
         }
 
-        if (file_exists('doc/002-grunt.md')) {
-            $event->getIO()->write('[presta-initializer] doc/002-grunt.md already exist : abort');
-            return;
-        }
-
         if (!file_exists('doc')) {
             mkdir('doc');
         }
 
         $content = file_get_contents(self::getSkeletonPath() . 'doc/001-installation.md');
         file_put_contents('doc/001-installation.md', $content);
-        $content = file_get_contents(self::getSkeletonPath() . 'doc/002-grunt.md');
-        file_put_contents('doc/002-grunt.md', $content);
 
         $event->getIO()->write('[presta-initializer] generate documentation skeleton done');
     }
