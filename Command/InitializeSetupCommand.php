@@ -15,7 +15,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Nicolas Joubert <njoubert@prestaconcept.net>
  */
-class InitializeInstallCommand extends AbstractInitializerCommand
+class InitializeSetupCommand extends AbstractInitializerCommand
 {
     /**
      * @var string
@@ -28,8 +28,8 @@ class InitializeInstallCommand extends AbstractInitializerCommand
     protected function configure()
     {
         $this
-            ->setName('presta:initialize:install')
-            ->setDescription('Install Initializer');
+            ->setName('presta:initialize:setup')
+            ->setDescription('Setup Initializer');
     }
 
     /**
@@ -39,30 +39,14 @@ class InitializeInstallCommand extends AbstractInitializerCommand
     {
         $this->init($input, $output);
 
-        $this->log('[presta-initializer] Install');
+        $this->log('[presta-initializer] Setup');
 
         $this->consolePath = $this->askConsolePath();
         $this->generateDocumentationFiles();
         $this->generateMakefile();
         $this->cleanInstall();
 
-        $this->log('[presta-initializer] Install done');
-    }
-
-    /**
-     * Ask console file path to user (prepare for Sf3)
-     *
-     * @return string
-     */
-    public function askConsolePath()
-    {
-        $dialog = $this->getHelperSet()->get('dialog');
-
-        return $dialog->ask(
-            $this->output,
-            'Location of console file (default: app/console):',
-            'app/console'
-        );
+        $this->log('[presta-initializer] Setup done');
     }
 
     /**

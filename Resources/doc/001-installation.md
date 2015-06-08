@@ -32,7 +32,7 @@ you have installed your project and get the Symfony source code.
     
 **NB: This file must be never push by deploiement and only be present on dev environment.**
 
-### Then launch install command
+### Then launch setup command
 
-    ###CONSOLE_PATH### presta:initialize:install
+    ###CONSOLE_PATH### presta:initialize:setup
     

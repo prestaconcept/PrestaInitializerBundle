@@ -33,6 +33,22 @@ abstract class AbstractInitializerCommand extends ContainerAwareCommand
     protected $output;
 
     /**
+     * Ask console file path to user (prepare for Sf3)
+     *
+     * @return string
+     */
+    public function askConsolePath()
+    {
+        $dialog = $this->getHelperSet()->get('dialog');
+
+        return $dialog->ask(
+            $this->output,
+            'Location of console file (default: app/console):',
+            'app/console'
+        );
+    }
+
+    /**
      * @param InputInterface $input
      * @param OutputInterface $output
      */

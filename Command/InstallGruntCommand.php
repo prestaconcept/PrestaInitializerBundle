@@ -45,17 +45,6 @@ class InstallGruntCommand extends AbstractInitializerCommand
         $this->generateGruntFile();
     }
 
-    public function askConsolePath()
-    {
-        $dialog = $this->getHelperSet()->get('dialog');
-
-        return $dialog->ask(
-            $this->output,
-            'Location of console file (default: app/console): ',
-            'app/console'
-        );
-    }
-
     /**
      * Handle every step required for Grunt installation
      */
