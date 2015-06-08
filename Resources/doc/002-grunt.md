@@ -6,7 +6,7 @@
 
 To add Grunt to your project, you will have to launch this task:
 
-    app/console presta:initialize:grunt
+    ###CONSOLE_PATH### presta:initialize:grunt
     
 ### Configuration
 

@@ -9,20 +9,22 @@
  */
 namespace Presta\InitializerBundle\Command;
 
-use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Cocur\Slugify\Slugify;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Dumper;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * @author Matthieu Crinquand <mcrinquand@prestaconcept.net>
  */
 class InstallGruntCommand extends AbstractInitializerCommand
 {
+    /**
+     * @var string
+     */
+    protected $consolePath;
+
     /**
      * {@inheritdoc}
      */
@@ -43,6 +45,17 @@ class InstallGruntCommand extends AbstractInitializerCommand
         $this->generateGruntFile();
     }
 
+    public function askConsolePath()
+    {
+        $dialog = $this->getHelperSet()->get('dialog');
+
+        return $dialog->ask(
+            $this->output,
+            'Location of console file (default: app/console): ',
+            'app/console'
+        );
+    }
+
     /**
      * Handle every step required for Grunt installation
      */
@@ -51,6 +64,8 @@ class InstallGruntCommand extends AbstractInitializerCommand
         $fileSystem = new Filesystem();
 
         $this->log('[presta-initializer] generate grunt skeleton');
+
+        $this->consolePath = $this->askConsolePath();
 
         // Gruntfile.js & package.json
         // copy grunt-config folder
@@ -105,16 +120,16 @@ grunt-install: ais
 
 # launch the fos:js-routing even if not exists
 grunt-publish: ais
-	- app/console fos:js-routing:dump --env=$(ENV) 2> /dev/null
+	- '.$this->consolePath.' fos:js-routing:dump --env=$(ENV) 2> /dev/null
 
 ## Project tasks';
 
         $content = str_replace($toReplace, $replacement, $content);
 
         $toReplace = '
-	app/console presta:deployment:install --env=dev';
+	'.$this->consolePath.' presta:deployment:install --env=dev';
         $replacement = '
-	app/console presta:deployment:install --env=dev
+	'.$this->consolePath.' presta:deployment:install --env=dev
 	make grunt-install
 	ln -s ./node_modules/grunt-contrib-watch/tasks/lib/livereload.js ./web/livereload.js';
 

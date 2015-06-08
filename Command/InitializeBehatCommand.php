@@ -15,7 +15,7 @@ class InitializeBehatCommand extends AbstractInitializerCommand
     protected function configure()
     {
         $this
-            ->setName('presta:initializer:behat')
+            ->setName('presta:initialize:behat')
             ->setDescription('Initialize behat inside your projet')
             ->setHelp(<<<EOF
 The <info>%command.name%</info> command initialize behat with
